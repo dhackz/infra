@@ -25,8 +25,8 @@ module "vpc" {
   }
 }
 
-resource "aws_security_group" "nodepool_instance" {
-  name        = "nodepool-instance"
+resource "aws_security_group" "nodepool_node" {
+  name        = "nodepool-node"
   description = "Allow ssh inbound anything outbound"
   vpc_id      = module.vpc.vpc_id
 
@@ -54,7 +54,7 @@ resource "aws_security_group" "nodepool_instance" {
   }
 
   tags = {
-    Name = "nodepool-instance"
+    Name = "nodepool-node"
   }
 }
 
