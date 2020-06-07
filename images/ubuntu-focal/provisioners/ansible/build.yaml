@@ -1,0 +1,16 @@
+- hosts: all
+  tasks:
+    - name: Create zuul sudoers file
+      copy:
+        content: "{{ ansible_user }} ALL=(ALL) NOPASSWD: ALL"
+        dest: /etc/sudoers.d/zuul
+      become: true
+    - name: Delete cloud-init sudoers file
+      file:
+        state: absent
+        path: /etc/sudoers.d/90-cloud-init-users
+      become: true
+  roles:
+    - ensure-docker
+    - ensure-pip
+    - ensure-go
