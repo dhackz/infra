@@ -2,4 +2,4 @@
     check: &id001
       jobs:
         - noop
-    check: *id001
+    gate: *id001
